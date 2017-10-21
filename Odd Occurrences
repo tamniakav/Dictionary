@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace P2.Odd_Occurrences
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string input = Console.ReadLine().ToLower();
+            var words = input.Split( ' ' );
+
+            var counter = new Dictionary<string, int>();
+
+            foreach (var item in words)
+            {
+                if (counter.ContainsKey(item))
+                {
+                    counter[item]++;
+                }
+                else
+                {
+                    counter[item] = 1;
+                }
+            }
+
+            var result = new List<string>();
+
+            foreach (var item in counter)
+            {
+                if (item.Value % 2 != 0)
+                {
+                    result.Add(item.Key);
+                }
+            }
+
+            Console.WriteLine(string.Join(", ", result));
+        }
+    }
+}
